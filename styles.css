@@ -110,7 +110,7 @@ body {
 a { color: inherit; text-decoration: none; }
 
 /* Sans for the name, headings, and reading text; mono for numbers and data. */
-.stage-num, .metric-label, .metric-value, table, .segmented button, .tab-row button,
+.stage-num, .tab-row button,
 .btn, .qa-label, .qa-value, .citation-card-head, .citation-copy, .citation-code {
   font-family: var(--font-mono);
 }
