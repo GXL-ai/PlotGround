@@ -259,12 +259,6 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .discrepancy-figure { margin-bottom: 1.25rem; }
 .discrepancy-figure.is-tall img { max-width: 680px; width: 100%; }
 .discrepancy-figure.is-tall figcaption { max-width: 680px; margin-left: auto; margin-right: auto; }
-.check-panel { padding: 1.2rem 1.3rem; border-left: 3px solid var(--warn); }
-.check-panel h3 { font-size: 0.96rem; margin-bottom: 0.4rem; }
-.check-panel p { color: var(--text-secondary); font-size: 0.78rem; max-width: 72ch; }
-.check-steps { margin: 0.8rem 0; padding-left: 1.4rem; display: grid; gap: 0.35rem; font-size: 0.8rem; }
-.check-steps li::marker { color: var(--warn); font-weight: 800; }
-.check-note { margin-top: 0.2rem; }
 
 /* ---------- Citation ---------- */
 .citation-card { max-width: 920px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: 8px; background: var(--panel); box-shadow: var(--shadow); overflow: hidden; }

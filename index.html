@@ -199,17 +199,6 @@
           <img src="assets/figures/discrepancy.png" alt="Published survival curves compared with Kaplan–Meier curves reconstructed from the deposited individual-level records." loading="lazy">
           <figcaption><strong>Survival curves vs. deposited individual-level records.</strong> The published figure shows the blue curve (<em>S/S,+/+</em>) reaching zero survival first, whereas the deposited records imply zero survival for <em>S/S,+/DEL</em>. The genotype labels appear inconsistent with the source data.</figcaption>
         </figure>
-
-        <div class="panel check-panel">
-          <h3>From benchmark to consistency check</h3>
-          <p>The same steps PlotGround uses to build questions can flag figures that may not match their data:</p>
-          <ol class="check-steps">
-            <li><strong>Map</strong> the figure to its deposited source table.</li>
-            <li><strong>Reconstruct</strong> the plotted quantity from the table.</li>
-            <li><strong>Compare</strong> it with the value a model reads from the figure.</li>
-          </ol>
-          <p class="check-note">A model's own reading errors also trigger flags, so today the check works best as a filter that narrows candidates for human review. It becomes more precise as reading accuracy improves.</p>
-        </div>
       </div>
     </section>
 
