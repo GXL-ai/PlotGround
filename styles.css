@@ -292,14 +292,18 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .funnel-row.final .funnel-bar { border-color: var(--accent-primary); background: linear-gradient(90deg, color-mix(in srgb, var(--accent-primary) 30%, transparent) var(--w), transparent var(--w)); }
 .funnel-row.final .val { color: var(--accent-primary); }
 
-/* ---------- Findings ---------- */
-.finding-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.finding-card { padding: 1.15rem 1.2rem; }
-.finding-tag { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px; background: var(--accent-soft); color: var(--accent-primary); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
-.finding-card.warn .finding-tag { background: var(--warn-soft); color: var(--warn); }
-.finding-card h3 { font-size: 0.98rem; margin: 0.55rem 0 0.4rem; }
-.finding-card p { color: var(--text-secondary); font-size: 0.76rem; }
-.figure-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; margin-top: 1.25rem; align-items: start; }
+/* ---------- Discrepancies ---------- */
+.discrepancy-stats { margin-bottom: 1.25rem; }
+.discrepancy-stats .metric::before { background: var(--warn); }
+.discrepancy-figure { margin-bottom: 1.25rem; }
+.discrepancy-figure.is-tall img { max-width: 680px; width: 100%; }
+.discrepancy-figure.is-tall figcaption { max-width: 680px; margin-left: auto; margin-right: auto; }
+.check-panel { padding: 1.2rem 1.3rem; border-left: 3px solid var(--warn); }
+.check-panel h3 { font-size: 0.96rem; margin-bottom: 0.4rem; }
+.check-panel p { color: var(--text-secondary); font-size: 0.78rem; max-width: 72ch; }
+.check-steps { margin: 0.8rem 0; padding-left: 1.4rem; display: grid; gap: 0.35rem; font-size: 0.8rem; }
+.check-steps li::marker { color: var(--warn); font-weight: 800; }
+.check-note { margin-top: 0.2rem; }
 
 /* ---------- Citation ---------- */
 .citation-card { max-width: 920px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: 8px; background: var(--panel); box-shadow: var(--shadow); overflow: hidden; }
@@ -317,8 +321,8 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .example-body, .figure-pair { grid-template-columns: minmax(0, 1fr); }
-  .stage-grid, .finding-grid { grid-template-columns: minmax(0, 1fr); }
+  .example-body { grid-template-columns: minmax(0, 1fr); }
+  .stage-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 860px) {

@@ -30,7 +30,7 @@
           <a href="#leaderboard">Leaderboard</a>
           <a href="#examples">Examples</a>
           <a href="#pipeline">Pipeline</a>
-          <a href="#findings">Findings</a>
+          <a href="#discrepancies">Discrepancies</a>
           <a href="#citation">Cite</a>
           <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
             <span class="theme-sun">☼</span>
@@ -197,39 +197,37 @@
     </section>
 
 
-    <!-- ============ FINDINGS ============ -->
-    <section id="findings">
+    <!-- ============ DISCREPANCIES ============ -->
+    <section id="discrepancies">
       <div class="container">
-        <h2 class="section-title">Findings</h2>
-        <p class="section-description">Where models fail, and what source-grounded data reveals about the figures themselves.</p>
+        <h2 class="section-title">Figure–Data Discrepancies</h2>
+        <p class="section-description">During human verification we found 8 figures whose plotted values disagree with the values reconstructed from their own deposited source data. Our review found no recipe error that explains the gap, so these candidates were excluded from PlotGround-1k.</p>
 
-        <div class="finding-grid">
-          <div class="panel finding-card">
-            <div class="finding-tag">Failure mode</div>
-            <h3>Logarithmic axes</h3>
-            <p>Models recognize log scales but misplace values between labeled ticks. Predicting 300 for a gold value of 252.59 looks close on the plot, yet is a 19% error.</p>
-          </div>
-          <div class="panel finding-card">
-            <div class="finding-tag">Failure mode</div>
-            <h3>Snapping to ticks</h3>
-            <p>For a bar of 4.99 extending past the last tick at 4, eight of sixteen models answered exactly 4. Only three read the overshoot and answered 5.</p>
-          </div>
-          <div class="panel finding-card warn">
-            <div class="finding-tag">Discovery</div>
-            <h3>Figure–data discrepancies</h3>
-            <p>Human verification surfaced 8 figures whose plotted values disagree with their own deposited source data — a use case for accurate digitization.</p>
-          </div>
+        <div class="metrics-strip discrepancy-stats">
+          <div class="metric"><div class="metric-label">Discrepant figures</div><div class="metric-value">8</div><div class="metric-note">found among 1,205 audited candidates</div></div>
+          <div class="metric"><div class="metric-label">GPT-5.6 Sol agrees with</div><div class="metric-value">8 / 8</div><div class="metric-note">the figure, not the table</div></div>
+          <div class="metric"><div class="metric-label">Largest example</div><div class="metric-value">8.28 → 7.7</div><div class="metric-note">−log<sub>10</sub> adj. <em>p</em>, source vs. plotted</div></div>
         </div>
 
-        <div class="figure-pair">
-          <figure class="panel figure-panel">
-            <img src="assets/figures/examples.png" alt="Two representative failure cases: a log-axis misreading and tick snapping on a horizontal bar chart." loading="lazy">
-            <figcaption><strong>Representative failure cases.</strong> (a) A small positional error on a log axis becomes a large numerical error. (b) Predictions snap to the final labeled tick.</figcaption>
-          </figure>
-          <figure class="panel figure-panel">
-            <img src="assets/figures/discrepancy_main.png" alt="A GO enrichment bar plot whose top bar ends near 7.7 while the deposited adjusted p-value implies 8.28." loading="lazy">
-            <figcaption><strong>A published figure vs. its own source data.</strong> The deposited adjusted <em>p</em>-value for vesicle-mediated transport implies −log<sub>10</sub> = 8.28, but the plotted bar ends near 7.7, short of the axis limit at 8.</figcaption>
-          </figure>
+        <figure class="panel figure-panel discrepancy-figure">
+          <img src="assets/figures/discrepancy_main.png" alt="A GO enrichment bar plot whose top bar ends near 7.7 while the deposited adjusted p-value implies 8.28." loading="lazy">
+          <figcaption><strong>GO enrichment plot vs. its deposited source data.</strong> The deposited adjusted <em>p</em>-value for vesicle-mediated transport (5.27 × 10<sup>−9</sup>) corresponds to −log<sub>10</sub> = 8.28, but the plotted bar ends near 7.7, short of the axis limit at 8. Axis clipping cannot explain the gap, since a clipped bar would reach the limit.</figcaption>
+        </figure>
+
+        <figure class="panel figure-panel discrepancy-figure is-tall">
+          <img src="assets/figures/discrepancy.png" alt="Published survival curves compared with Kaplan–Meier curves reconstructed from the deposited individual-level records." loading="lazy">
+          <figcaption><strong>Survival curves vs. deposited individual-level records.</strong> The published figure shows the blue curve (<em>S/S,+/+</em>) reaching zero survival first, whereas the deposited records imply zero survival for <em>S/S,+/DEL</em>. The genotype labels appear inconsistent with the source data.</figcaption>
+        </figure>
+
+        <div class="panel check-panel">
+          <h3>From benchmark to consistency check</h3>
+          <p>The same steps PlotGround uses to build questions can flag figures that may not match their data:</p>
+          <ol class="check-steps">
+            <li><strong>Map</strong> the figure to its deposited source table.</li>
+            <li><strong>Reconstruct</strong> the plotted quantity from the table.</li>
+            <li><strong>Compare</strong> it with the value a model reads from the figure.</li>
+          </ol>
+          <p class="check-note">A model's own reading errors also trigger flags, so today the check works best as a filter that narrows candidates for human review. It becomes more precise as reading accuracy improves.</p>
         </div>
       </div>
     </section>
