@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlotGround Benchmark</title>
+  <meta name="description" content="PlotGround: Grounding Plot Digitization in Real Scientific Figures and Their Source Data.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#147c72">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      var saved = localStorage.getItem("plotground-theme");
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <a class="logo" href="#top" aria-label="PlotGround home">Plot<span>Ground</span></a>
+        <button class="hamburger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-right" id="nav-right">
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#chart-types">Chart Types</a>
+          <a href="#examples">Examples</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#evidence">Figure vs. Table</a>
+          <a href="#findings">Findings</a>
+          <a href="#citation">Cite</a>
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-sun">☼</span>
+            <span class="theme-moon">●</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="eyebrow">Scientific Plot Digitization Benchmark</div>
+      <h1>Plot<span>Ground</span></h1>
+      <p class="hero-subtitle">Grounding Plot Digitization in Real Scientific Figures and Their Source Data</p>
+      <p class="hero-setting">How accurately can multimodal models read numbers off real scientific figures? We pair 1,119 questions from 1,066 bioRxiv preprints with author-released source data and evaluate 16 frontier models.</p>
+
+      <div class="authors">
+        <div class="author-list">
+          <span>Yaohui Zhang<sup>1,3*</sup></span>
+          <span>Binxu Li<sup>2*</sup></span>
+          <span>Haoyi Duan<sup>2*</sup></span>
+          <span>Jiacheng Miao<sup>3</sup></span>
+          <span>Yixin Wang<sup>3</sup></span>
+          <span>Xinran Du<sup>2</sup></span>
+          <span>Chenyue Li<sup>3</sup></span>
+          <span>Shilong Liu<sup>2</sup></span>
+          <span>Kevin Wu<sup>1</sup></span>
+          <span>James Zou<sup>1,3</sup></span>
+        </div>
+        <div class="affiliations">
+          <span><sup>1</sup>Generative Expert Labs, Inc</span>
+          <span><sup>2</sup>Princeton University</span>
+          <span><sup>3</sup>Stanford University</span>
+          <span class="affil-note"><sup>*</sup>Co-first authors</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn resource-btn" href="https://arxiv.org/abs/2610.06825" target="_blank" rel="noopener">
+          <img class="resource-logo" src="assets/logos/arxiv.svg" alt="" aria-hidden="true">
+          <span>arXiv</span>
+        </a>
+        <a class="btn resource-btn" href="https://arxiv.org/pdf/2610.06825" target="_blank" rel="noopener">
+          <svg class="resource-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 2.5h8l4.5 4.5v14.5H6z M14 2.5V7h4.5 M9 12h6 M9 15.5h6 M9 19h4"/></svg>
+          <span>PDF</span>
+        </a>
+        <span class="btn resource-btn is-disabled" title="The PlotGround pipeline will be released upon acceptance">
+          <img class="resource-logo github-logo" src="assets/logos/github.svg" alt="" aria-hidden="true">
+          <span>Code <small>soon</small></span>
+        </span>
+        <span class="btn resource-btn is-disabled" title="PlotGround-1k will be released upon acceptance">
+          <img class="resource-logo" src="assets/logos/huggingface.svg" alt="" aria-hidden="true">
+          <span>Dataset <small>soon</small></span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ LEADERBOARD ============ -->
+    <section id="leaderboard" class="band">
+      <div class="container">
+        <h2 class="section-title">Leaderboard</h2>
+        <p class="section-description">Each model sees the full figure and a question targeting one plotted value, and answers from the figure alone. Accuracy is the share of predictions within a relative-error tolerance of the source-grounded reference value.</p>
+
+        <div class="metrics-strip" aria-label="Benchmark summary">
+          <div class="metric"><div class="metric-label">Questions</div><div class="metric-value">1,119</div><div class="metric-note">human-verified</div></div>
+          <div class="metric"><div class="metric-label">Source papers</div><div class="metric-value">1,066</div><div class="metric-note">bioRxiv preprints, 2025</div></div>
+          <div class="metric"><div class="metric-label">Chart types</div><div class="metric-value">10</div><div class="metric-note">bar, volcano, scatter, box, …</div></div>
+          <div class="metric"><div class="metric-label">Best Acc. ±5%</div><div class="metric-value">87.5%</div><div class="metric-note">GPT-5.6 Sol</div></div>
+          <div class="metric"><div class="metric-label">Best Acc. ±2%</div><div class="metric-value">73.8%</div><div class="metric-note">−11 to −24 pp across models</div></div>
+        </div>
+
+        <div class="panel table-panel">
+          <div class="panel-head">
+            <div>
+              <h3>Model Accuracy on PlotGround-1k</h3>
+              <p>16 models from 9 developers, default settings via OpenRouter. Click a column header to sort.</p>
+            </div>
+            <div class="segmented" id="tol-switch" role="tablist" aria-label="Tolerance">
+              <button type="button" role="tab" class="is-active" data-tol="acc5" aria-selected="true">±5%</button>
+              <button type="button" role="tab" data-tol="acc2" aria-selected="false">±2%</button>
+            </div>
+          </div>
+          <div class="table-wrap" role="region" aria-label="Leaderboard table" tabindex="0">
+            <table class="board-table" id="board-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th data-sort="name" class="sortable">Model</th>
+                  <th data-sort="dev" class="sortable">Developer</th>
+                  <th data-sort="acc" class="sortable num" id="acc-head">Acc. ±5%</th>
+                  <th data-sort="drop" class="sortable num">Δ ±5→±2</th>
+                  <th data-sort="cost" class="sortable num">Cost / Q (¢)</th>
+                  <th data-sort="tokens" class="sortable num">Output tokens</th>
+                </tr>
+              </thead>
+              <tbody id="board-body"></tbody>
+            </table>
+          </div>
+          <p class="chart-footnote">Cost and output tokens are averaged over all questions; output tokens include reasoning tokens where the provider reports them.</p>
+        </div>
+
+        <div class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <h3>Accuracy vs. Inference Cost</h3>
+              <p>Higher cost does not buy higher accuracy. Dashed line connects Pareto-optimal models.</p>
+            </div>
+          </div>
+          <div class="scatter-wrap" id="cost-chart"></div>
+          <div class="legend" id="dev-legend"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHART TYPES ============ -->
+    <section id="chart-types">
+      <div class="container">
+        <h2 class="section-title">Accuracy by Chart Type</h2>
+        <p class="section-description">Bar, volcano, and scatter plots make up 77.3% of PlotGround-1k. For every model, the hardest of the five common types is scatter or volcano — finding one labeled point among many is the bottleneck.</p>
+
+        <div class="two-col">
+          <div class="panel chart-panel">
+            <div class="panel-head"><div><h3>Composition</h3><p>Questions per chart type (n = 1,119)</p></div></div>
+            <div class="hbar-list" id="type-dist"></div>
+          </div>
+          <div class="panel chart-panel">
+            <div class="panel-head"><div><h3>Per-Model Accuracy (±5%)</h3><p>Five most common chart types</p></div></div>
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Accuracy heatmap">
+              <table class="heatmap" id="type-heatmap"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXAMPLES ============ -->
+    <section id="examples" class="band">
+      <div class="container">
+        <h2 class="section-title">Benchmark Examples</h2>
+        <p class="section-description">Models receive the complete multi-panel figure. Each question names its target only with identifiers visible in the figure; the answer is recomputed from the deposited source table.</p>
+        <div class="panel example-panel">
+          <div class="tab-row" id="example-tabs" role="tablist" aria-label="Chart type"></div>
+          <div class="example-body" id="example-body" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PIPELINE ============ -->
+    <section id="pipeline">
+      <div class="container">
+        <h2 class="section-title">The PlotGround Pipeline</h2>
+        <p class="section-description">Instead of rendering synthetic charts from data, PlotGround starts from real figures and works backward to the source data that produced them. All stages run as Claude Code agents over a filesystem view of each paper.</p>
+
+        <figure class="panel figure-panel">
+          <img src="assets/figures/pipeline.png" alt="Overview of the PlotGround pipeline: inputs, figure–source mapping, panel-level grounding, and question synthesis." loading="lazy">
+        </figure>
+
+        <div class="stage-grid">
+          <article class="panel stage-card">
+            <div class="stage-num">01</div>
+            <h3>Mapping</h3>
+            <p>Bind each figure to candidate supplementary tables using direct evidence (explicit references in text) or indirect evidence (figure descriptions matching table contents).</p>
+          </article>
+          <article class="panel stage-card">
+            <div class="stage-num">02</div>
+            <h3>Grounding</h3>
+            <p>Keep only panels whose values can be recovered with simple operations — selection, aggregation, ratios, log transforms — and record a reconstruction recipe anchored to literal evidence.</p>
+          </article>
+          <article class="panel stage-card">
+            <div class="stage-num">03</div>
+            <h3>Synthesis</h3>
+            <p>Execute the recipe, sanity-check the recomputed values, and write at most two questions per figure using only figure-visible labels.</p>
+          </article>
+        </div>
+
+        <div class="panel table-panel">
+          <div class="panel-head"><div><h3>Construction Funnel</h3><p>From 37,635 preprints to 1,119 verified questions</p></div></div>
+          <div class="funnel" id="funnel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVIDENCE ============ -->
+    <section id="evidence" class="band">
+      <div class="container">
+        <h2 class="section-title">Figure vs. Source Table</h2>
+        <p class="section-description">Because every question is linked to its source table, we can hold the question fixed and change only the evidence. Claude Code (Claude Sonnet 5) answers 500 rewritten questions with the full text plus figures, source tables, or both.</p>
+        <div class="evidence-grid" id="evidence-grid"></div>
+        <div class="callout-grid">
+          <div class="callout"><strong>0.39% vs 0.001%</strong><span>Median relative error among correct answers: from figures vs. from tables.</span></div>
+          <div class="callout"><strong>~26 turns</strong><span>Per question with figures only — the agent crops, enlarges, and measures pixel positions.</span></div>
+          <div class="callout"><strong>492 / 500</strong><span>Given both, the agent opens the table for nearly every question and a figure for only 20.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINDINGS ============ -->
+    <section id="findings">
+      <div class="container">
+        <h2 class="section-title">Findings</h2>
+        <p class="section-description">Where models fail, and what source-grounded data reveals about the figures themselves.</p>
+
+        <div class="finding-grid">
+          <div class="panel finding-card">
+            <div class="finding-tag">Failure mode</div>
+            <h3>Logarithmic axes</h3>
+            <p>Models recognize log scales but misplace values between labeled ticks. Predicting 300 for a gold value of 252.59 looks close on the plot, yet is a 19% error.</p>
+          </div>
+          <div class="panel finding-card">
+            <div class="finding-tag">Failure mode</div>
+            <h3>Snapping to ticks</h3>
+            <p>For a bar of 4.99 extending past the last tick at 4, eight of sixteen models answered exactly 4. Only three read the overshoot and answered 5.</p>
+          </div>
+          <div class="panel finding-card warn">
+            <div class="finding-tag">Discovery</div>
+            <h3>Figure–data discrepancies</h3>
+            <p>Human verification surfaced 8 figures whose plotted values disagree with their own deposited source data — a use case for accurate digitization.</p>
+          </div>
+        </div>
+
+        <div class="figure-pair">
+          <figure class="panel figure-panel">
+            <img src="assets/figures/examples.png" alt="Two representative failure cases: a log-axis misreading and tick snapping on a horizontal bar chart." loading="lazy">
+            <figcaption><strong>Representative failure cases.</strong> (a) A small positional error on a log axis becomes a large numerical error. (b) Predictions snap to the final labeled tick.</figcaption>
+          </figure>
+          <figure class="panel figure-panel">
+            <img src="assets/figures/discrepancy_main.png" alt="A GO enrichment bar plot whose top bar ends near 7.7 while the deposited adjusted p-value implies 8.28." loading="lazy">
+            <figcaption><strong>A published figure vs. its own source data.</strong> The deposited adjusted <em>p</em>-value for vesicle-mediated transport implies −log<sub>10</sub> = 8.28, but the plotted bar ends near 7.7, short of the axis limit at 8.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CITATION ============ -->
+    <section id="citation" class="citation-section band">
+      <div class="container">
+        <h2 class="section-title">Cite PlotGround</h2>
+        <p class="section-description">If you find PlotGround useful in your research, please cite our work.</p>
+        <div class="citation-card">
+          <div class="citation-card-head">
+            <span>BibTeX</span>
+            <button class="citation-copy" id="citation-copy" type="button">Copy</button>
+          </div>
+          <pre class="citation-code"><code id="citation-bibtex">@misc{zhang2026plotground,
+  title         = {PlotGround: Grounding Plot Digitization in Real Scientific Figures and Their Source Data},
+  author        = {Yaohui Zhang and Binxu Li and Haoyi Duan and Jiacheng Miao and Yixin Wang and Xinran Du and Chenyue Li and Shilong Liu and Kevin Wu and James Zou},
+  year          = {2026},
+  eprint        = {2610.06825},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2610.06825}
+}</code></pre>
+          <p class="citation-copy-status" id="citation-copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>PlotGround · Generative Expert Labs · Princeton · Stanford</span>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
