@@ -257,8 +257,11 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .discrepancy-stats { margin-bottom: 1.25rem; }
 .discrepancy-stats .metric::before { background: var(--warn); }
 .discrepancy-figure { margin-bottom: 1.25rem; }
-.discrepancy-figure.is-tall img { max-width: 680px; width: 100%; }
-.discrepancy-figure.is-tall figcaption { max-width: 680px; margin-left: auto; margin-right: auto; }
+/* Two panels sized by aspect ratio so they share one height. */
+.figure-row { display: flex; gap: 1.25rem; align-items: center; }
+.figure-row img { min-width: 0; width: 100%; height: auto; }
+.figure-row .r-curves { flex: 1.79 1 0; }
+.figure-row .r-table { flex: 2.82 1 0; }
 
 /* ---------- Citation ---------- */
 .citation-card { max-width: 920px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: 8px; background: var(--panel); box-shadow: var(--shadow); overflow: hidden; }
@@ -276,6 +279,7 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
+  .figure-row { flex-direction: column; }
   .example-body { grid-template-columns: minmax(0, 1fr); }
   .stage-grid { grid-template-columns: minmax(0, 1fr); }
 }
