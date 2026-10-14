@@ -255,8 +255,6 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 
 
 /* ---------- Discrepancies ---------- */
-.discrepancy-stats { margin-bottom: 1.25rem; }
-.discrepancy-stats .metric::before { background: var(--warn); }
 .discrepancy-figure { max-width: 900px; margin: 0 auto 1.25rem; }
 /* Curves get extra width so the plot reads at a similar scale to the table. */
 .figure-row { display: flex; gap: 1.25rem; align-items: flex-start; }

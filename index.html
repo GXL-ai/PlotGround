@@ -184,11 +184,6 @@
         <h2 class="section-title">Figure–Data Discrepancies</h2>
         <p class="section-description">During human verification we found 8 figures whose plotted values disagree with the values reconstructed from their own deposited source data. Our review found no recipe error that explains the gap, so these candidates were excluded from PlotGround-1k.</p>
 
-        <div class="metrics-strip discrepancy-stats">
-          <div class="metric"><div class="metric-label">Discrepant figures</div><div class="metric-value">8</div><div class="metric-note">found among 1,205 audited candidates</div></div>
-          <div class="metric"><div class="metric-label">GPT-5.6 Sol agrees with</div><div class="metric-value">8 / 8</div><div class="metric-note">the figure, not the table</div></div>
-        </div>
-
         <figure class="panel figure-panel discrepancy-figure">
           <img src="assets/figures/discrepancy_main.png" alt="A GO enrichment bar plot whose top bar ends near 7.7 while the deposited adjusted p-value implies 8.28." loading="lazy">
           <figcaption><strong>GO enrichment plot vs. its deposited source data.</strong> The deposited adjusted <em>p</em>-value for vesicle-mediated transport (5.27 × 10<sup>−9</sup>) corresponds to −log<sub>10</sub> = 8.28, but the plotted bar ends near 7.7, short of the axis limit at 8. Axis clipping cannot explain the gap, since a clipped bar would reach the limit.</figcaption>
