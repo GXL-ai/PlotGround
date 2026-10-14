@@ -118,19 +118,6 @@
     show(0);
   }
 
-  /* ---------- Funnel ---------- */
-  function renderFunnel() {
-    const max = D.funnel[0].value;
-    $("#funnel").innerHTML = D.funnel.map((f) => {
-      return `<div class="funnel-row${f.final ? " final" : ""}">
-        <span class="funnel-stage">${f.stage}</span>
-        <div class="funnel-bar" style="--w:${((f.value / max) * 100).toFixed(1)}%">
-          <span class="step">${f.step}</span>
-          <span class="val">${fmt(f.value)} <small>${f.unit}${f.note ? " · " + f.note : ""}</small></span>
-        </div></div>`;
-    }).join("");
-  }
-
   /* ---------- Citation ---------- */
   $("#citation-copy").addEventListener("click", async () => {
     const text = $("#citation-bibtex").textContent;
@@ -151,5 +138,4 @@
 
   renderBoard();
   renderExamples();
-  renderFunnel();
 })();

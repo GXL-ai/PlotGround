@@ -251,20 +251,6 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .stage-card h3 { font-size: 1rem; margin: 0.2rem 0 0.45rem; }
 .stage-card p { color: var(--text-secondary); font-size: 0.76rem; }
 
-.funnel { display: grid; gap: 0.45rem; }
-.funnel-row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); align-items: center; gap: 0.8rem; font-size: 0.74rem; }
-.funnel-stage { font-weight: 800; }
-.funnel-bar {
-  position: relative; min-height: 30px; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
-  padding: 0.3rem 0.7rem; border-radius: 6px;
-  background: linear-gradient(90deg, var(--accent-soft) var(--w), transparent var(--w));
-  border: 1px solid var(--border-color);
-}
-.funnel-bar .step { color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.funnel-bar .val { font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.funnel-bar .val small { color: var(--text-secondary); font-weight: 500; }
-.funnel-row.final .funnel-bar { border-color: var(--accent-primary); background: linear-gradient(90deg, color-mix(in srgb, var(--accent-primary) 30%, transparent) var(--w), transparent var(--w)); }
-.funnel-row.final .val { color: var(--accent-primary); }
 
 /* ---------- Discrepancies ---------- */
 .discrepancy-stats { margin-bottom: 1.25rem; }
@@ -317,8 +303,6 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
   section { padding: 2.6rem 0; }
   .section-title { font-size: 1.45rem; }
   .nav-right { padding: 1rem; }
-  .funnel-row { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
-  .funnel-bar .step { display: none; }
   .acc-cell { min-width: 140px; }
   .acc-bar { max-width: 70px; }
 }

@@ -43,15 +43,5 @@ window.PLOTGROUND = {
     { type: "Bubble",   img: "assets/examples/6.png",  q: "In panel A, what is the protein count for the bubble labeled 'Viscus'?", a: "132" },
     { type: "Strip",    img: "assets/examples/7.png",  q: "In panel D, what is the MGL+ probability score for the Donor 2 (red) dot in the Aquamicrobium row?", a: "1.165311" },
     { type: "Survival", img: "assets/examples/8.png",  q: "In panel A, what is the probability of survival at the rightmost end of the PLWH curve?", a: "0.7229" }
-  ],
-
-  funnel: [
-    { stage: "Collection",   step: "2025 bioRxiv preprints with supplements", value: 37635, unit: "papers" },
-    { stage: "Filtering",    step: "Require a tabular supplement",            value: 10540, unit: "papers" },
-    { stage: "Mapping",      step: "Bind figures to source tables",           value: 28536, unit: "mappings", note: "8,197 papers" },
-    { stage: "Downsampling", step: "One mapping per sampled paper",           value: 7487,  unit: "mappings" },
-    { stage: "Grounding",    step: "Admit reconstructable panels",            value: 3894,  unit: "panels", note: "1,568 figures" },
-    { stage: "Synthesis",    step: "Generate and filter questions",           value: 1205,  unit: "questions" },
-    { stage: "Verification", step: "Human audit of all candidates",           value: 1119,  unit: "questions", note: "1,066 papers", final: true }
   ]
 };
