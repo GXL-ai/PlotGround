@@ -176,6 +176,7 @@ section { padding: 3.5rem 0; }
 section[id] { scroll-margin-top: 64px; }
 .band { background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 .section-title { text-align: center; font-size: 1.78rem; line-height: 1.2; margin-bottom: 0.8rem; }
+.inline-link { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 0.2em; }
 .section-description { max-width: 860px; margin: 0 auto 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
 
 .panel { background: var(--panel); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: var(--shadow); }
