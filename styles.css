@@ -257,10 +257,10 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .discrepancy-stats { margin-bottom: 1.25rem; }
 .discrepancy-stats .metric::before { background: var(--warn); }
 .discrepancy-figure { max-width: 900px; margin: 0 auto 1.25rem; }
-/* Two panels sized by aspect ratio so they share one height. */
+/* Curves get extra width so the plot reads at a similar scale to the table. */
 .figure-row { display: flex; gap: 1.25rem; align-items: center; }
 .figure-row img { min-width: 0; width: 100%; height: auto; }
-.figure-row .r-curves { flex: 1.79 1 0; }
+.figure-row .r-curves { flex: 2.5 1 0; }
 .figure-row .r-table { flex: 2.82 1 0; }
 
 /* ---------- Citation ---------- */
