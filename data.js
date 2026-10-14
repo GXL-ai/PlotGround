@@ -12,24 +12,24 @@ window.PLOTGROUND = {
     "Thinking Machines": { color: "var(--dev-tml)", monogram: "TM" }
   },
 
-  // acc2 / acc5: accuracy (%) at ±2% / ±5% relative tolerance; cost in cents per question.
+  // acc2 / acc5: accuracy (%) at ±2% / ±5% relative tolerance.
   models: [
-    { name: "GPT-5.6 Sol",         dev: "OpenAI",            acc2: 73.8, acc5: 87.5, cost: 1.013, tokens: 419 },
-    { name: "GPT-5.6 Luna",        dev: "OpenAI",            acc2: 69.7, acc5: 83.8, cost: 0.113, tokens: 447 },
-    { name: "GPT-5.6 Terra",       dev: "OpenAI",            acc2: 66.6, acc5: 82.1, cost: 0.868, tokens: 231 },
-    { name: "Gemini 3.7 Flash",    dev: "Google",            acc2: 65.7, acc5: 81.2, cost: 0.428, tokens: 909 },
-    { name: "Gemini 3.8 Flash",    dev: "Google",            acc2: 65.5, acc5: 79.8, cost: 0.933, tokens: 2257 },
-    { name: "Qwen3.8 Max",         dev: "Alibaba",           acc2: 57.7, acc5: 77.9, cost: 2.945, tokens: 4269 },
-    { name: "Claude Opus 5",       dev: "Anthropic",         acc2: 60.2, acc5: 77.1, cost: 2.724, tokens: 564 },
-    { name: "Claude Sonnet 5",     dev: "Anthropic",         acc2: 55.6, acc5: 74.4, cost: 0.631, tokens: 105 },
-    { name: "Gemini 3.1 Pro",      dev: "Google",            acc2: 49.9, acc5: 67.6, cost: 4.237, tokens: 3337 },
-    { name: "Qwen3.8 Flash",       dev: "Alibaba",           acc2: 42.6, acc5: 64.4, cost: 0.223, tokens: 4111 },
-    { name: "Kimi K3",             dev: "Moonshot",          acc2: 38.2, acc5: 62.5, cost: 8.371, tokens: 5545 },
-    { name: "GLM-5.3 Flash",       dev: "Z.ai",              acc2: 39.8, acc5: 60.2, cost: 0.105, tokens: 1495 },
-    { name: "Inkling",             dev: "Thinking Machines", acc2: 32.0, acc5: 50.3, cost: 0.866, tokens: 1633 },
-    { name: "MiniMax M3",          dev: "MiniMax",           acc2: 33.8, acc5: 50.3, cost: 0.102, tokens: 358 },
-    { name: "DeepSeek V4.1 Flash", dev: "DeepSeek",          acc2: 29.3, acc5: 47.0, cost: 0.131, tokens: 904 },
-    { name: "DeepSeek V4 FV exp",  dev: "DeepSeek",          acc2: 17.0, acc5: 28.6, cost: 0.261, tokens: 3177 }
+    { name: "GPT-5.6 Sol",         dev: "OpenAI",            acc2: 73.8, acc5: 87.5 },
+    { name: "GPT-5.6 Luna",        dev: "OpenAI",            acc2: 69.7, acc5: 83.8 },
+    { name: "GPT-5.6 Terra",       dev: "OpenAI",            acc2: 66.6, acc5: 82.1 },
+    { name: "Gemini 3.7 Flash",    dev: "Google",            acc2: 65.7, acc5: 81.2 },
+    { name: "Gemini 3.8 Flash",    dev: "Google",            acc2: 65.5, acc5: 79.8 },
+    { name: "Qwen3.8 Max",         dev: "Alibaba",           acc2: 57.7, acc5: 77.9 },
+    { name: "Claude Opus 5",       dev: "Anthropic",         acc2: 60.2, acc5: 77.1 },
+    { name: "Claude Sonnet 5",     dev: "Anthropic",         acc2: 55.6, acc5: 74.4 },
+    { name: "Gemini 3.1 Pro",      dev: "Google",            acc2: 49.9, acc5: 67.6 },
+    { name: "Qwen3.8 Flash",       dev: "Alibaba",           acc2: 42.6, acc5: 64.4 },
+    { name: "Kimi K3",             dev: "Moonshot",          acc2: 38.2, acc5: 62.5 },
+    { name: "GLM-5.3 Flash",       dev: "Z.ai",              acc2: 39.8, acc5: 60.2 },
+    { name: "Inkling",             dev: "Thinking Machines", acc2: 32.0, acc5: 50.3 },
+    { name: "MiniMax M3",          dev: "MiniMax",           acc2: 33.8, acc5: 50.3 },
+    { name: "DeepSeek V4.1 Flash", dev: "DeepSeek",          acc2: 29.3, acc5: 47.0 },
+    { name: "DeepSeek V4 FV exp",  dev: "DeepSeek",          acc2: 17.0, acc5: 28.6 }
   ],
 
 

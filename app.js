@@ -3,7 +3,6 @@
 
   const D = window.PLOTGROUND;
   const $ = (sel) => document.querySelector(sel);
-  const fmt = (n) => n.toLocaleString("en-US");
   const devColor = (dev) => D.developers[dev].color;
 
   /* ---------- Theme + menu ---------- */
@@ -72,8 +71,6 @@
         <td class="dev" style="color:${devColor(r.dev)}">${r.dev}</td>
         <td class="num"><div class="acc-cell"><div class="acc-bar"><span style="width:${r.acc}%;background:${devColor(r.dev)}"></span></div><span class="acc-val">${r.acc.toFixed(1)}</span></div></td>
         <td class="num drop">−${r.drop.toFixed(1)}</td>
-        <td class="num">${r.cost.toFixed(3)}</td>
-        <td class="num">${fmt(r.tokens)}</td>
       </tr>`;
     }).join("");
   }
@@ -93,7 +90,7 @@
     th.addEventListener("click", () => {
       const key = th.dataset.sort;
       if (board.sort === key) board.asc = !board.asc;
-      else { board.sort = key; board.asc = key === "name" || key === "dev" || key === "cost" || key === "drop"; }
+      else { board.sort = key; board.asc = key === "name" || key === "dev" || key === "drop"; }
       renderBoard();
     })
   );
