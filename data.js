@@ -32,35 +32,7 @@ window.PLOTGROUND = {
     { name: "DeepSeek V4 FV exp",  dev: "DeepSeek",          acc2: 17.0, acc5: 28.6, cost: 0.261, tokens: 3177 }
   ],
 
-  chartTypes: [
-    { type: "Bar", n: 423 }, { type: "Volcano", n: 268 }, { type: "Scatter", n: 174 },
-    { type: "Box", n: 112 }, { type: "Line", n: 86 }, { type: "Violin", n: 27 },
-    { type: "Bubble", n: 15 }, { type: "MA plot", n: 6 }, { type: "Strip", n: 5 },
-    { type: "Survival", n: 3 }
-  ],
 
-  // Accuracy (±5%) by chart type, columns ordered by mean accuracy across models.
-  typeAccuracy: {
-    columns: ["Bar", "Line", "Box", "Scatter", "Volcano"],
-    rows: {
-      "GPT-5.6 Sol":         [92, 92, 88, 83, 82],
-      "GPT-5.6 Luna":        [90, 88, 79, 77, 81],
-      "GPT-5.6 Terra":       [88, 81, 82, 77, 79],
-      "Gemini 3.7 Flash":    [87, 87, 87, 75, 71],
-      "Gemini 3.8 Flash":    [87, 87, 85, 74, 68],
-      "Qwen3.8 Max":         [85, 79, 77, 69, 75],
-      "Claude Opus 5":       [86, 84, 83, 71, 63],
-      "Claude Sonnet 5":     [86, 80, 78, 66, 58],
-      "Gemini 3.1 Pro":      [75, 79, 73, 56, 58],
-      "Qwen3.8 Flash":       [72, 76, 67, 60, 52],
-      "Kimi K3":             [70, 69, 65, 55, 55],
-      "GLM-5.3 Flash":       [64, 73, 70, 57, 47],
-      "Inkling":             [52, 52, 60, 50, 44],
-      "MiniMax M3":          [56, 58, 61, 47, 37],
-      "DeepSeek V4.1 Flash": [55, 57, 52, 41, 34],
-      "DeepSeek V4 FV exp":  [34, 31, 34, 24, 21]
-    }
-  },
 
   examples: [
     { type: "Bar",      img: "assets/examples/1.png",  q: "In panel B, what is the bar height for the Menadione concentration of 500 ppm? (y-axis: 'Food consumption (g)')", a: "0.098525" },
@@ -81,11 +53,5 @@ window.PLOTGROUND = {
     { stage: "Grounding",    step: "Admit reconstructable panels",            value: 3894,  unit: "panels", note: "1,568 figures" },
     { stage: "Synthesis",    step: "Generate and filter questions",           value: 1205,  unit: "questions" },
     { stage: "Verification", step: "Human audit of all candidates",           value: 1119,  unit: "questions", note: "1,066 papers", final: true }
-  ],
-
-  evidence: [
-    { cond: "Figure", detail: "full text + figures",               acc: 90.0, cost: 0.408, latency: 139 },
-    { cond: "Table",  detail: "full text + source tables",         acc: 97.4, cost: 0.113, latency: 51 },
-    { cond: "Both",   detail: "full text + figures + source tables", acc: 98.2, cost: 0.115, latency: 51 }
   ]
 };

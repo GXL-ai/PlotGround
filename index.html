@@ -28,10 +28,8 @@
         </button>
         <div class="nav-right" id="nav-right">
           <a href="#leaderboard">Leaderboard</a>
-          <a href="#chart-types">Chart Types</a>
           <a href="#examples">Examples</a>
           <a href="#pipeline">Pipeline</a>
-          <a href="#evidence">Figure vs. Table</a>
           <a href="#findings">Findings</a>
           <a href="#citation">Cite</a>
           <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
@@ -150,29 +148,9 @@
       </div>
     </section>
 
-    <!-- ============ CHART TYPES ============ -->
-    <section id="chart-types">
-      <div class="container">
-        <h2 class="section-title">Accuracy by Chart Type</h2>
-        <p class="section-description">Bar, volcano, and scatter plots make up 77.3% of PlotGround-1k. For every model, the hardest of the five common types is scatter or volcano — finding one labeled point among many is the bottleneck.</p>
-
-        <div class="two-col">
-          <div class="panel chart-panel">
-            <div class="panel-head"><div><h3>Composition</h3><p>Questions per chart type (n = 1,119)</p></div></div>
-            <div class="hbar-list" id="type-dist"></div>
-          </div>
-          <div class="panel chart-panel">
-            <div class="panel-head"><div><h3>Per-Model Accuracy (±5%)</h3><p>Five most common chart types</p></div></div>
-            <div class="table-wrap" tabindex="0" role="region" aria-label="Accuracy heatmap">
-              <table class="heatmap" id="type-heatmap"></table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ EXAMPLES ============ -->
-    <section id="examples" class="band">
+    <section id="examples">
       <div class="container">
         <h2 class="section-title">Benchmark Examples</h2>
         <p class="section-description">Models receive the complete multi-panel figure. Each question names its target only with identifiers visible in the figure; the answer is recomputed from the deposited source table.</p>
@@ -184,7 +162,7 @@
     </section>
 
     <!-- ============ PIPELINE ============ -->
-    <section id="pipeline">
+    <section id="pipeline" class="band">
       <div class="container">
         <h2 class="section-title">The PlotGround Pipeline</h2>
         <p class="section-description">Instead of rendering synthetic charts from data, PlotGround starts from real figures and works backward to the source data that produced them. All stages run as Claude Code agents over a filesystem view of each paper.</p>
@@ -218,19 +196,6 @@
       </div>
     </section>
 
-    <!-- ============ EVIDENCE ============ -->
-    <section id="evidence" class="band">
-      <div class="container">
-        <h2 class="section-title">Figure vs. Source Table</h2>
-        <p class="section-description">Because every question is linked to its source table, we can hold the question fixed and change only the evidence. Claude Code (Claude Sonnet 5) answers 500 rewritten questions with the full text plus figures, source tables, or both.</p>
-        <div class="evidence-grid" id="evidence-grid"></div>
-        <div class="callout-grid">
-          <div class="callout"><strong>0.39% vs 0.001%</strong><span>Median relative error among correct answers: from figures vs. from tables.</span></div>
-          <div class="callout"><strong>~26 turns</strong><span>Per question with figures only — the agent crops, enlarges, and measures pixel positions.</span></div>
-          <div class="callout"><strong>492 / 500</strong><span>Given both, the agent opens the table for nearly every question and a figure for only 20.</span></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ FINDINGS ============ -->
     <section id="findings">

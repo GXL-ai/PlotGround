@@ -12,8 +12,6 @@
     const t = document.documentElement.getAttribute("data-theme");
     return t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
   };
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => renderHeatmap());
-  new MutationObserver(() => renderHeatmap()).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   $("#theme-toggle").addEventListener("click", () => {
     const next = isDark() ? "light" : "dark";
@@ -170,47 +168,6 @@
     ).join("");
   }
 
-  /* ---------- Chart types ---------- */
-  function renderTypeDist() {
-    const total = D.chartTypes.reduce((s, t) => s + t.n, 0);
-    const max = D.chartTypes[0].n;
-    $("#type-dist").innerHTML = D.chartTypes.map((t) =>
-      `<div class="hbar-row"><span>${t.type}</span>
-        <div class="hbar-track"><span style="width:${(t.n / max) * 100}%"></span></div>
-        <span class="hbar-num"><b>${t.n}</b> · ${((t.n / total) * 100).toFixed(1)}%</span></div>`
-    ).join("");
-  }
-
-  function mix(a, b, t) {
-    return a.map((v, i) => Math.round(v + (b[i] - v) * t));
-  }
-  function hexToRgb(h) {
-    h = h.trim().replace("#", "");
-    return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
-  }
-
-  function renderHeatmap() {
-    const css = getComputedStyle(document.documentElement);
-    const lo = hexToRgb(css.getPropertyValue("--heat-lo"));
-    const hi = hexToRgb(css.getPropertyValue("--heat-hi"));
-    const dark = isDark();
-    const counts = Object.fromEntries(D.chartTypes.map((t) => [t.type, t.n]));
-    const { columns, rows } = D.typeAccuracy;
-
-    let html = "<thead><tr><th></th>" + columns.map((c) => `<th>${c}<small>n=${counts[c]}</small></th>`).join("") + "</tr></thead><tbody>";
-    Object.entries(rows).forEach(([name, vals]) => {
-      const minIdx = vals.indexOf(Math.min(...vals));
-      html += `<tr><td class="row-name">${name}</td>` + vals.map((v, i) => {
-        const t = Math.max(0, Math.min(1, (v - 20) / 75));
-        const [r, g, b] = mix(lo, hi, t);
-        const fg = dark ? (t > 0.6 ? "#0b1411" : "#e3ebe5") : (t > 0.55 ? "#ffffff" : "#1e2824");
-        const label = `${name}, ${columns[i]}: ${v}%` + (i === minIdx ? " (lowest for this model)" : "");
-        return `<td class="cell" style="background:rgb(${r},${g},${b});color:${fg}" title="${label}">${v}</td>`;
-      }).join("") + "</tr>";
-    });
-    $("#type-heatmap").innerHTML = html + "</tbody>";
-  }
-
   /* ---------- Examples ---------- */
   function renderExamples() {
     const tabs = $("#example-tabs");
@@ -252,24 +209,6 @@
     }).join("");
   }
 
-  /* ---------- Evidence ---------- */
-  function renderEvidence() {
-    const maxCost = Math.max(...D.evidence.map((e) => e.cost));
-    const maxLat = Math.max(...D.evidence.map((e) => e.latency));
-    const bestAcc = Math.max(...D.evidence.map((e) => e.acc));
-    $("#evidence-grid").innerHTML = D.evidence.map((e) => `
-      <article class="panel evidence-card${e.acc === bestAcc ? " best" : ""}">
-        <div class="cond">${e.cond}</div>
-        <div class="cond-detail">${e.detail}</div>
-        <div class="big">${e.acc.toFixed(1)}%</div>
-        <div class="big-label">Accuracy ±5%</div>
-        <div class="ev-stats">
-          <div class="ev-stat"><span class="lbl">Cost</span><div class="track"><span style="width:${(e.cost / maxCost) * 100}%"></span></div><span class="v">$${e.cost.toFixed(3)}</span></div>
-          <div class="ev-stat"><span class="lbl">Latency</span><div class="track"><span style="width:${(e.latency / maxLat) * 100}%"></span></div><span class="v">${e.latency}s</span></div>
-        </div>
-      </article>`).join("");
-  }
-
   /* ---------- Citation ---------- */
   $("#citation-copy").addEventListener("click", async () => {
     const text = $("#citation-bibtex").textContent;
@@ -290,9 +229,6 @@
 
   renderBoard();
   renderScatter();
-  renderTypeDist();
-  renderHeatmap();
   renderExamples();
   renderFunnel();
-  renderEvidence();
 })();
