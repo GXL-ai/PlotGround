@@ -9,7 +9,7 @@ window.PLOTGROUND = {
     "Z.ai":              { color: "var(--dev-zai)", logo: "assets/logos/providers/zai.svg" },
     MiniMax:             { color: "var(--dev-minimax)", logo: "assets/logos/providers/minimax.svg" },
     DeepSeek:            { color: "var(--dev-deepseek)", logo: "assets/logos/providers/deepseek.svg" },
-    "Thinking Machines": { color: "var(--dev-tml)", monogram: "TM" }
+    "Thinking Machines": { color: "var(--dev-tml)", logo: "assets/logos/providers/thinkingmachines.png" }
   },
 
   // acc2 / acc5: accuracy (%) at ±2% / ±5% relative tolerance.
