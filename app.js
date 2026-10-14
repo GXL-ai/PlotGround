@@ -8,11 +8,17 @@
   const SVG_NS = "http://www.w3.org/2000/svg";
 
   /* ---------- Theme + menu ---------- */
+  const isDark = () => {
+    const t = document.documentElement.getAttribute("data-theme");
+    return t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  };
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => renderHeatmap());
+  new MutationObserver(() => renderHeatmap()).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
   $("#theme-toggle").addEventListener("click", () => {
-    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    const next = isDark() ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("plotground-theme", next); } catch (e) {}
-    renderHeatmap();
   });
 
   const menu = $("#nav-right");
@@ -187,7 +193,7 @@
     const css = getComputedStyle(document.documentElement);
     const lo = hexToRgb(css.getPropertyValue("--heat-lo"));
     const hi = hexToRgb(css.getPropertyValue("--heat-hi"));
-    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+    const dark = isDark();
     const counts = Object.fromEntries(D.chartTypes.map((t) => [t.type, t.n]));
     const { columns, rows } = D.typeAccuracy;
 

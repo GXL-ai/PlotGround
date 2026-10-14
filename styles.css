@@ -31,7 +31,7 @@
   --dev-tml: #a07a12;
 }
 
-[data-theme="dark"] {
+:root[data-theme="dark"] {
   --bg-primary: #101714;
   --bg-secondary: #17211d;
   --panel: #121c18;
@@ -60,12 +60,47 @@
   --dev-minimax: #b8d85f;
   --dev-deepseek: #6cc4f5;
   --dev-tml: #f0ca62;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #101714;
+    --bg-secondary: #17211d;
+    --panel: #121c18;
+    --text-primary: #e3ebe5;
+    --text-secondary: #98aaa2;
+    --accent-primary: #42b8a9;
+    --accent-soft: rgba(66, 184, 169, 0.14);
+    --warn: #e07a6f;
+    --warn-soft: rgba(224, 122, 111, 0.14);
+    --border-color: #2c4036;
+    --grid: #1f2e27;
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+    --focus: rgba(66, 184, 169, 0.3);
+    --heat-lo: #16221d;
+    --heat-hi: #3fb3a4;
+    --rank-gold: #f0ca62;
+    --rank-silver: #c4ccd0;
+    --rank-bronze: #e4a17c;
+  
+    --dev-openai: #55c4b5;
+    --dev-google: #8eb5ff;
+    --dev-anthropic: #ff8d78;
+    --dev-alibaba: #c9a0e8;
+    --dev-moonshot: #aeb9c6;
+    --dev-zai: #f08cba;
+    --dev-minimax: #b8d85f;
+    --dev-deepseek: #6cc4f5;
+    --dev-tml: #f0ca62;
+    color-scheme: dark;
+  }
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   font-family: "JetBrains Mono", "SF Mono", Monaco, Consolas, monospace;
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -76,11 +111,15 @@ a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 img { max-width: 100%; display: block; }
 
-.container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+.container {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(2rem, env(safe-area-inset-left, 0px));
+  padding-right: max(2rem, env(safe-area-inset-right, 0px));
+}
 
 /* ---------- Nav ---------- */
 .navbar {
-  position: sticky; top: 0; z-index: 30;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
   background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
   border-bottom: 1px solid var(--border-color);
   backdrop-filter: blur(12px);
@@ -98,8 +137,13 @@ img { max-width: 100%; display: block; }
 .hamburger { display: none; width: 36px; height: 36px; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
 .hamburger span { width: 17px; height: 2px; background: currentColor; }
 .icon-btn { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; }
-.theme-moon, [data-theme="dark"] .theme-sun { display: none; }
-[data-theme="dark"] .theme-moon { display: inline; }
+.theme-moon { display: none; }
+:root[data-theme="dark"] .theme-sun { display: none; }
+:root[data-theme="dark"] .theme-moon { display: inline; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-sun { display: none; }
+  :root:not([data-theme="light"]) .theme-moon { display: inline; }
+}
 
 /* ---------- Hero ---------- */
 .hero { padding: 3.6rem 0 2.6rem; text-align: center; }
@@ -134,7 +178,8 @@ a.btn:hover { border-color: var(--accent-primary); transform: translateY(-1px); 
 .resource-btn small { color: var(--text-secondary); font-weight: 500; font-size: 0.66rem; }
 .btn.is-disabled { opacity: 0.6; cursor: default; }
 .resource-logo { width: 18px; height: 18px; flex: 0 0 18px; object-fit: contain; }
-[data-theme="dark"] .github-logo { filter: invert(1) brightness(1.08); }
+:root[data-theme="dark"] .github-logo { filter: invert(1) brightness(1.08); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .github-logo { filter: invert(1) brightness(1.08); } }
 
 /* ---------- Sections ---------- */
 section { padding: 3.5rem 0; }
@@ -328,7 +373,10 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 }
 
 @media (max-width: 600px) {
-  .container { padding: 0 1rem; }
+  .container {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
   section { padding: 2.6rem 0; }
   .section-title { font-size: 1.45rem; }
   .nav-right { padding: 1rem; }
