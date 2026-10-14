@@ -91,7 +91,8 @@
   }
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 112.5%; }
+@media (max-width: 600px) { html { font-size: 106.25%; } }
 
 body {
   min-width: 0;
@@ -174,7 +175,7 @@ section { padding: 3.5rem 0; }
 section[id] { scroll-margin-top: 64px; }
 .band { background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 .section-title { text-align: center; font-size: 1.78rem; line-height: 1.2; margin-bottom: 0.8rem; }
-.section-description { max-width: 860px; margin: 0 auto 2rem; text-align: center; color: var(--text-secondary); font-size: 0.86rem; }
+.section-description { max-width: 860px; margin: 0 auto 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
 
 .panel { background: var(--panel); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: var(--shadow); }
 .table-panel { padding: 1.25rem; margin-top: 1.25rem; }
@@ -249,7 +250,7 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .stage-card { padding: 1.1rem 1.2rem; }
 .stage-num { color: var(--accent-primary); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
 .stage-card h3 { font-size: 1rem; margin: 0.2rem 0 0.45rem; }
-.stage-card p { color: var(--text-secondary); font-size: 0.76rem; }
+.stage-card p { color: var(--text-secondary); font-size: 0.8rem; }
 
 
 /* ---------- Discrepancies ---------- */
