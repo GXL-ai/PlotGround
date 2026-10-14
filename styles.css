@@ -256,7 +256,7 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 /* ---------- Discrepancies ---------- */
 .discrepancy-stats { margin-bottom: 1.25rem; }
 .discrepancy-stats .metric::before { background: var(--warn); }
-.discrepancy-figure { margin-bottom: 1.25rem; }
+.discrepancy-figure { max-width: 900px; margin: 0 auto 1.25rem; }
 /* Two panels sized by aspect ratio so they share one height. */
 .figure-row { display: flex; gap: 1.25rem; align-items: center; }
 .figure-row img { min-width: 0; width: 100%; height: auto; }
