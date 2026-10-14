@@ -1,6 +1,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Monaco, Consolas, monospace;
   --bg-primary: #f6f8f4;
   --bg-secondary: #e8eee8;
   --panel: #ffffff;
@@ -96,13 +98,20 @@ html { scroll-behavior: smooth; font-size: 112.5%; }
 
 body {
   min-width: 0;
-  font-family: "JetBrains Mono", "SF Mono", Monaco, Consolas, monospace;
+  font-family: var(--font-body);
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.55;
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* Mono for the name, headings, numbers, and data; sans for reading text. */
+.logo, .hero h1, .section-title, .panel-head h3, .stage-card h3, .stage-num,
+.metric-label, .metric-value, table, .segmented button, .tab-row button,
+.btn, .qa-label, .qa-value, .citation-card-head, .citation-copy, .citation-code {
+  font-family: var(--font-mono);
+}
 button, input, select { font: inherit; }
 img { max-width: 100%; display: block; }
 
