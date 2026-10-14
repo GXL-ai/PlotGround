@@ -27,9 +27,9 @@
           <span></span><span></span><span></span>
         </button>
         <div class="nav-right" id="nav-right">
-          <a href="#leaderboard">Leaderboard</a>
-          <a href="#examples">Examples</a>
           <a href="#pipeline">Pipeline</a>
+          <a href="#examples">Examples</a>
+          <a href="#leaderboard">Leaderboard</a>
           <a href="#discrepancies">Discrepancies</a>
           <a href="#citation">Cite</a>
           <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
@@ -91,6 +91,53 @@
   </header>
 
   <main>
+    <!-- ============ PIPELINE ============ -->
+    <section id="pipeline" class="band">
+      <div class="container">
+        <h2 class="section-title">The PlotGround Pipeline</h2>
+        <p class="section-description">Instead of rendering synthetic charts from data, PlotGround starts from real figures and works backward to the source data that produced them. All stages run as Claude Code agents over a filesystem view of each paper.</p>
+
+        <figure class="panel figure-panel">
+          <img src="assets/figures/pipeline.png" alt="Overview of the PlotGround pipeline: inputs, figure–source mapping, panel-level grounding, and question synthesis." loading="lazy">
+        </figure>
+
+        <div class="stage-grid">
+          <article class="panel stage-card">
+            <div class="stage-num">01</div>
+            <h3>Mapping</h3>
+            <p>Bind each figure to candidate supplementary tables using direct evidence (explicit references in text) or indirect evidence (figure descriptions matching table contents).</p>
+          </article>
+          <article class="panel stage-card">
+            <div class="stage-num">02</div>
+            <h3>Grounding</h3>
+            <p>Keep only panels whose values can be recovered with simple operations — selection, aggregation, ratios, log transforms — and record a reconstruction recipe anchored to literal evidence.</p>
+          </article>
+          <article class="panel stage-card">
+            <div class="stage-num">03</div>
+            <h3>Synthesis</h3>
+            <p>Execute the recipe, sanity-check the recomputed values, and write at most two questions per figure using only figure-visible labels.</p>
+          </article>
+        </div>
+
+        <div class="panel table-panel">
+          <div class="panel-head"><div><h3>Construction Funnel</h3><p>From 37,635 preprints to 1,119 verified questions</p></div></div>
+          <div class="funnel" id="funnel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXAMPLES ============ -->
+    <section id="examples">
+      <div class="container">
+        <h2 class="section-title">Benchmark Examples</h2>
+        <p class="section-description">Models receive the complete multi-panel figure. Each question names its target only with identifiers visible in the figure; the answer is recomputed from the deposited source table.</p>
+        <div class="panel example-panel">
+          <div class="tab-row" id="example-tabs" role="tablist" aria-label="Chart type"></div>
+          <div class="example-body" id="example-body" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ LEADERBOARD ============ -->
     <section id="leaderboard" class="band">
       <div class="container">
@@ -132,54 +179,6 @@
               <tbody id="board-body"></tbody>
             </table>
           </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============ EXAMPLES ============ -->
-    <section id="examples">
-      <div class="container">
-        <h2 class="section-title">Benchmark Examples</h2>
-        <p class="section-description">Models receive the complete multi-panel figure. Each question names its target only with identifiers visible in the figure; the answer is recomputed from the deposited source table.</p>
-        <div class="panel example-panel">
-          <div class="tab-row" id="example-tabs" role="tablist" aria-label="Chart type"></div>
-          <div class="example-body" id="example-body" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PIPELINE ============ -->
-    <section id="pipeline" class="band">
-      <div class="container">
-        <h2 class="section-title">The PlotGround Pipeline</h2>
-        <p class="section-description">Instead of rendering synthetic charts from data, PlotGround starts from real figures and works backward to the source data that produced them. All stages run as Claude Code agents over a filesystem view of each paper.</p>
-
-        <figure class="panel figure-panel">
-          <img src="assets/figures/pipeline.png" alt="Overview of the PlotGround pipeline: inputs, figure–source mapping, panel-level grounding, and question synthesis." loading="lazy">
-        </figure>
-
-        <div class="stage-grid">
-          <article class="panel stage-card">
-            <div class="stage-num">01</div>
-            <h3>Mapping</h3>
-            <p>Bind each figure to candidate supplementary tables using direct evidence (explicit references in text) or indirect evidence (figure descriptions matching table contents).</p>
-          </article>
-          <article class="panel stage-card">
-            <div class="stage-num">02</div>
-            <h3>Grounding</h3>
-            <p>Keep only panels whose values can be recovered with simple operations — selection, aggregation, ratios, log transforms — and record a reconstruction recipe anchored to literal evidence.</p>
-          </article>
-          <article class="panel stage-card">
-            <div class="stage-num">03</div>
-            <h3>Synthesis</h3>
-            <p>Execute the recipe, sanity-check the recomputed values, and write at most two questions per figure using only figure-visible labels.</p>
-          </article>
-        </div>
-
-        <div class="panel table-panel">
-          <div class="panel-head"><div><h3>Construction Funnel</h3><p>From 37,635 preprints to 1,119 verified questions</p></div></div>
-          <div class="funnel" id="funnel"></div>
         </div>
       </div>
     </section>
