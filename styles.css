@@ -145,6 +145,7 @@ img { max-width: 100%; display: block; }
 .hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.02; margin-bottom: 1rem; }
 .hero p { max-width: 780px; margin: 0 auto; color: var(--text-secondary); font-size: 0.96rem; }
 .hero .hero-subtitle { color: var(--text-primary); font-size: 1.04rem; font-weight: 700; margin-bottom: 0.8rem; }
+.hero .hero-question { color: var(--accent-primary); font-size: 0.92rem; font-weight: 700; margin-bottom: 0.5rem; }
 .hero .hero-setting { font-size: 0.84rem; }
 
 .authors { margin: 1.6rem auto 0; max-width: 860px; }
