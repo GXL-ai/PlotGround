@@ -32,6 +32,14 @@
   );
 
   /* ---------- Leaderboard ---------- */
+  function modelLogo(dev) {
+    const d = D.developers[dev];
+    const inner = d.logo
+      ? `<img src="${d.logo}" alt="" width="18" height="18">`
+      : `<span class="model-logo-mono">${d.monogram}</span>`;
+    return `<span class="model-logo" title="${dev}">${inner}</span>`;
+  }
+
   const board = { tol: "acc5", sort: "acc", asc: false };
 
   function renderBoard() {
@@ -60,9 +68,9 @@
       const rank = rankOf.get(r.name);
       return `<tr>
         <td><span class="rank rank-${rank}">${rank}</span></td>
-        <td class="model-name">${r.name}</td>
-        <td><span class="dev"><span class="dot" style="background:${devColor(r.dev)}"></span>${r.dev}</span></td>
-        <td class="num"><div class="acc-cell"><div class="acc-bar"><span style="width:${r.acc}%"></span></div><span class="acc-val">${r.acc.toFixed(1)}</span></div></td>
+        <td><span class="model-cell">${modelLogo(r.dev)}<span class="model-name">${r.name}</span></span></td>
+        <td class="dev">${r.dev}</td>
+        <td class="num"><div class="acc-cell"><div class="acc-bar"><span style="width:${r.acc}%;background:${devColor(r.dev)}"></span></div><span class="acc-val">${r.acc.toFixed(1)}</span></div></td>
         <td class="num drop">−${r.drop.toFixed(1)}</td>
         <td class="num">${r.cost.toFixed(3)}</td>
         <td class="num">${fmt(r.tokens)}</td>

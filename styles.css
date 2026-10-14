@@ -14,6 +14,7 @@
   --warn-soft: rgba(193, 84, 72, 0.1);
   --border-color: #cedbd2;
   --grid: #e3eae4;
+  --logo-chip: #ffffff;
   --shadow: 0 12px 30px rgba(31, 43, 38, 0.06);
   --focus: rgba(20, 124, 114, 0.26);
   --rank-gold: #8a6411;
@@ -43,6 +44,7 @@
   --warn-soft: rgba(224, 122, 111, 0.14);
   --border-color: #2c4036;
   --grid: #1f2e27;
+  --logo-chip: #e8eee8;
   --shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
   --focus: rgba(66, 184, 169, 0.3);
   --rank-gold: #f0ca62;
@@ -74,6 +76,7 @@
     --warn-soft: rgba(224, 122, 111, 0.14);
     --border-color: #2c4036;
     --grid: #1f2e27;
+  --logo-chip: #e8eee8;
     --shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
     --focus: rgba(66, 184, 169, 0.3);
     --rank-gold: #f0ca62;
@@ -231,8 +234,17 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 .rank-1 { color: var(--rank-gold); }
 .rank-2 { color: var(--rank-silver); }
 .rank-3 { color: var(--rank-bronze); }
+.model-cell { display: inline-flex; align-items: center; gap: 0.6rem; }
 .model-name { font-weight: 800; }
-.dev { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--text-secondary); }
+/* Brand marks are drawn for light grounds, so they sit on a light chip in both themes. */
+.model-logo {
+  width: 26px; height: 26px; flex: 0 0 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-color); border-radius: 7px; background: var(--logo-chip);
+}
+.model-logo img { width: 18px; height: 18px; display: block; }
+.model-logo-mono { color: #1e2824; font-size: 0.6rem; font-weight: 800; }
+.dev { color: var(--text-secondary); }
 .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
 .acc-cell { display: flex; align-items: center; gap: 0.6rem; justify-content: flex-end; min-width: 190px; }
 .acc-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--grid); overflow: hidden; max-width: 130px; }

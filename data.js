@@ -1,15 +1,15 @@
 // All numbers from the PlotGround paper (arXiv:2610.06825).
 window.PLOTGROUND = {
   developers: {
-    OpenAI:              { color: "var(--dev-openai)" },
-    Google:              { color: "var(--dev-google)" },
-    Anthropic:           { color: "var(--dev-anthropic)" },
-    Alibaba:             { color: "var(--dev-alibaba)" },
-    Moonshot:            { color: "var(--dev-moonshot)" },
-    "Z.ai":              { color: "var(--dev-zai)" },
-    MiniMax:             { color: "var(--dev-minimax)" },
-    DeepSeek:            { color: "var(--dev-deepseek)" },
-    "Thinking Machines": { color: "var(--dev-tml)" }
+    OpenAI:              { color: "var(--dev-openai)", logo: "assets/logos/providers/openai.svg" },
+    Google:              { color: "var(--dev-google)", logo: "assets/logos/providers/gemini.svg" },
+    Anthropic:           { color: "var(--dev-anthropic)", logo: "assets/logos/providers/claude.svg" },
+    Alibaba:             { color: "var(--dev-alibaba)", logo: "assets/logos/providers/qwen.svg" },
+    Moonshot:            { color: "var(--dev-moonshot)", logo: "assets/logos/providers/moonshot.svg" },
+    "Z.ai":              { color: "var(--dev-zai)", logo: "assets/logos/providers/zai.svg" },
+    MiniMax:             { color: "var(--dev-minimax)", logo: "assets/logos/providers/minimax.svg" },
+    DeepSeek:            { color: "var(--dev-deepseek)", logo: "assets/logos/providers/deepseek.svg" },
+    "Thinking Machines": { color: "var(--dev-tml)", monogram: "TM" }
   },
 
   // acc2 / acc5: accuracy (%) at ±2% / ±5% relative tolerance; cost in cents per question.
