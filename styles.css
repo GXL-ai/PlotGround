@@ -244,7 +244,7 @@ table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 }
 .model-logo img { width: 18px; height: 18px; display: block; }
 .model-logo-mono { color: #1e2824; font-size: 0.6rem; font-weight: 800; }
-.dev { color: var(--text-secondary); }
+.dev { font-weight: 700; }
 .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
 .acc-cell { display: flex; align-items: center; gap: 0.6rem; justify-content: flex-end; min-width: 190px; }
 .acc-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--grid); overflow: hidden; max-width: 130px; }

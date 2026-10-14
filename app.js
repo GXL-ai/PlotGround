@@ -69,7 +69,7 @@
       return `<tr>
         <td><span class="rank rank-${rank}">${rank}</span></td>
         <td><span class="model-cell">${modelLogo(r.dev)}<span class="model-name">${r.name}</span></span></td>
-        <td class="dev">${r.dev}</td>
+        <td class="dev" style="color:${devColor(r.dev)}">${r.dev}</td>
         <td class="num"><div class="acc-cell"><div class="acc-bar"><span style="width:${r.acc}%;background:${devColor(r.dev)}"></span></div><span class="acc-val">${r.acc.toFixed(1)}</span></div></td>
         <td class="num drop">−${r.drop.toFixed(1)}</td>
         <td class="num">${r.cost.toFixed(3)}</td>
